@@ -8,7 +8,6 @@ Dockerfile
 .gitignore
 README.md
 env.*
-.env
 devops
 
 

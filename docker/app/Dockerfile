@@ -26,15 +26,13 @@ RUN gem install bundler
 RUN gem update
 RUN gem uninstall fileutils
 RUN gem update fileutils --default
-# RUN bundle install --jobs 20
 RUN bundle install --jobs 20 --retry 5 --without development test --path vendor/bundle
-# RUN bundle install --jobs 20 --retry 5 --without development test
 
 # Adding project files
 COPY . .
 COPY ./docker/app/config/database.yml ./config/database.yml
 
-COPY ./docker/app/.env.example ./.env
+# COPY ./docker/app/.env.example ./.env
 # RUN bundle exec rake assets:precompile
 RUN RAILS_ENV=$RAILS_ENV bundle exec rake assets:precompile
 EXPOSE 3000
